@@ -54,7 +54,6 @@ public class PostProcessing implements AutoCloseable {
      */
     public void end() throws IllegalStateException {
         glDisable(GL_DEPTH_TEST);
-        // glDisable(GL_CULL_FACE);
 
         if (this.pipeline.size() == 0) {
             throw new IllegalStateException("The pipeline must have at least one item");
@@ -69,8 +68,7 @@ public class PostProcessing implements AutoCloseable {
         this.pipeline.get(0).unbind();  // it doesn't matter which one to call to unbind
         this.pipeline.get(this.pipeline.size() - 1).draw();
 
-        // glEnable(GL_DEPTH_TEST);
-        glEnable(GL_CULL_FACE);
+        glEnable(GL_DEPTH_TEST);
     }
 
     /**
